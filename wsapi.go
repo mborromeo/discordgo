@@ -46,6 +46,26 @@ type resumePacket struct {
 	} `json:"d"`
 }
 
+// Sequence returns Session sequence
+func (s *Session) Sequence() *int64 {
+	return s.sequence
+}
+
+// SetSequence sets Session sequence
+func (s *Session) SetSequence(sequence *int64) {
+	s.sequence = sequence
+}
+
+// SessionID returns Session ID
+func (s *Session) SessionID() string {
+	return s.sessionID
+}
+
+// SetSessionID sets Session ID
+func (s *Session) SetSessionID(sessionID string) {
+	s.sessionID = sessionID
+}
+
 // Open creates a websocket connection to Discord.
 // See: https://discordapp.com/developers/docs/topics/gateway#connecting
 func (s *Session) Open() error {
