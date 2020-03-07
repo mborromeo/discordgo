@@ -47,13 +47,13 @@ type resumePacket struct {
 }
 
 // Sequence returns Session sequence
-func (s *Session) Sequence() *int64 {
-	return s.sequence
+func (s *Session) Sequence() int64 {
+	return atomic.LoadInt64(s.sequence)
 }
 
 // SetSequence sets Session sequence
-func (s *Session) SetSequence(sequence *int64) {
-	s.sequence = sequence
+func (s *Session) SetSequence(sequence int64) {
+  atomic.StoreInt64(s.sequence, sequence)
 }
 
 // SessionID returns Session ID
